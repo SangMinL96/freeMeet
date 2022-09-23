@@ -1,0 +1,10 @@
+{
+  "name": "freeMeet",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "cd native && react-native run-android",
+    "ios": "cd native && react-native run-ios --simulator='iPhone 11 Pro'",
+    "start": "cd native && react-native start"
+  }
+}
