@@ -3,8 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "cd native && react-native run-android",
-    "ios": "cd native && react-native run-ios --simulator='iPhone 11 Pro'",
-    "start": "cd native && react-native start"
+    "android": "cd native && yarn android",
+    "ios": "cd native && yarn ios",
+    "nativestart": "cd native && yarn start",
+    "webdev": "cd web && yarn dev",
+    "webinstall":"cd web && yarn install"
+  },
+  "dependencies": {
+    "styled-components": "^5.3.5"
   }
 }

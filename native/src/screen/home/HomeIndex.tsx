@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   PermissionsAndroid,
   Platform,
   SafeAreaView,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import WebView from 'react-native-webview';
@@ -12,14 +13,15 @@ import styled from 'styled-components';
 import Geolocation from 'react-native-geolocation-service';
 
 function HomeIndex() {
-  const [location, setLocation] = useState();
+  const webViewRef = useRef<any>(null);
+  const [location, setLocation] = useState<any>(null);
   const requestPermission = async () => {
     if (Platform.OS === 'ios') {
       const result = await Geolocation.requestAuthorization('always');
       if (result === 'granted') {
         Geolocation.getCurrentPosition(
           pos => {
-            console.log(pos);
+            setLocation(pos.coords);
           },
           error => {
             console.log(error);
@@ -39,7 +41,7 @@ function HomeIndex() {
       if (result === 'granted') {
         Geolocation.getCurrentPosition(
           pos => {
-            console.log(pos);
+            setLocation(pos.coords);
           },
           error => {
             console.log(error);
@@ -58,9 +60,22 @@ function HomeIndex() {
     requestPermission();
   }, []);
 
+  const onTest = async () => {
+    await webViewRef.current.postMessage(JSON.stringify(location));
+  };
   return (
     <Container>
-      <Text>adsf</Text>
+      {location && (
+        <WebView
+          onLoad={() => setTimeout(() => onTest(), 300)}
+          ref={webViewRef}
+          javaScriptEnabled={true}
+          source={{uri: 'http://localhost:3010/map'}}
+          onMessage={event => {
+            console.log('받은 데이터(React) : ' + event.nativeEvent.data);
+          }}
+        />
+      )}
     </Container>
   );
 }
