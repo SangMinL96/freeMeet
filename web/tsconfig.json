@@ -18,42 +18,16 @@
     "noEmit": true,
     "jsx": "preserve",
     "strictPropertyInitialization": false,
-    // "paths": {
-    //   "@components/*": [
-    //     "components/*"
-    //   ],
-    //   "@styles/*": [
-    //     "styles/*"
-    //   ],
-    //   "@utils/*": [
-    //     "utils/*"
-    //   ],
-    //   "@hooks/*": [
-    //     "hooks/*"
-    //   ],
-    //   "@service/*": [
-    //     "service/*"
-    //   ],
-    //   "@modules/*": [
-    //     "modules/*"
-    //   ],
-    //   "@feature/*": [
-    //     "feature/*"
-    //   ],
-    //   "@svgs/*": [
-    //     "styles/svgs/*"
-    //   ],
-    //   "@images/*": [
-    //     "public/images/*"
-    //   ],
-    //   "@fonts/*": [
-    //     "public/fonts/*"
-    //   ],
-    //   "@core/*": [
-    //     "components/core/*"
-    //   ]
-    //   // "src/*": ["src/*"],
-    // },
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"],
+      "@modules/*": ["modules/*"]
+
+      // "src/*": ["src/*"],
+    },
     "module": "esnext",
     "incremental": true
   },

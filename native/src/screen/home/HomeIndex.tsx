@@ -1,16 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {
-  PermissionsAndroid,
-  Platform,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import WebView from 'react-native-webview';
-import theme from 'style/theme';
-import styled from 'styled-components';
+import {PermissionsAndroid, Platform, SafeAreaView} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
+import WebView from 'react-native-webview';
+import styled from 'styled-components';
 
 function HomeIndex() {
   const webViewRef = useRef<any>(null);
@@ -61,16 +53,20 @@ function HomeIndex() {
   }, []);
 
   const onTest = async () => {
-    await webViewRef.current.postMessage(JSON.stringify(location));
+    const postData = JSON.stringify({
+      lat: location.latitude,
+      long: location.longitude,
+    });
+    await webViewRef.current.postMessage(postData);
   };
   return (
     <Container>
       {location && (
         <WebView
+          originWhitelist={['http://*', 'https://*', 'intent://*']}
           onLoad={() => setTimeout(() => onTest(), 300)}
           ref={webViewRef}
-          javaScriptEnabled={true}
-          source={{uri: 'http://localhost:3010/map'}}
+          source={{uri: 'http://127.0.0.1:3010/map'}}
           onMessage={event => {
             console.log('받은 데이터(React) : ' + event.nativeEvent.data);
           }}

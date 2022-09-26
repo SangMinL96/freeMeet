@@ -49,6 +49,7 @@ class MyDocument extends Document {
       <Html lang="ko">
         <Head></Head>
         {this.redirectIEToEdge()}
+
         <body id="nextBody">
           <Main />
           <NextScript />

@@ -7,7 +7,8 @@
     "ios": "cd native && yarn ios",
     "nativestart": "cd native && yarn start",
     "webdev": "cd web && yarn dev",
-    "webinstall":"cd web && yarn install"
+    "webbuild": "cd web && yarn build",
+    "webinstall": "cd web && yarn install"
   },
   "dependencies": {
     "styled-components": "^5.3.5"
