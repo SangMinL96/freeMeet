@@ -10,7 +10,7 @@ function MapPage() {
     <>
       <script
         type="text/javascript"
-        src=" https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=jt4thwo3nc&submodules=geocoder"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6e6c247918cfb068a61063e16dc6aa6"
       ></script>
       <MapIndex />
     </>

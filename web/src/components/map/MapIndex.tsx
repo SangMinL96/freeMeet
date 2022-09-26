@@ -5,46 +5,30 @@ function MapIndex() {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    const mapOptions = {
-      center: new naver.maps.LatLng("37.4967867", "126.9978993"),
-      zoom: 14,
-    };
-    const map = new naver.maps.Map("map", mapOptions);
-    const marker = new naver.maps.Marker({
-      position: new naver.maps.LatLng("37.4967867", "126.9978993"),
-      map: map,
-      icon: {
-        content: `
-            <div style="display:+ flex; position: absolute; left: 0px; top: 0px;">
-              <span style="z-index: 1;">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31" height="33" viewBox="0 0 31 33">
-                  <defs>
-                    <filter id="패스_38027" x="0" y="0" width="31" height="33" filterUnits="userSpaceOnUse">
-                      <feOffset dy="3" input="SourceAlpha"/>
-                      <feGaussianBlur stdDeviation="3" result="blur"/>
-                      <feFlood flood-opacity="0.161"/>
-                      <feComposite operator="in" in2="blur"/>
-                      <feComposite in="SourceGraphic"/>
-                    </filter>
-                  </defs>
-                  <g id="그룹_2336" data-name="그룹 2336" transform="translate(-227.5 -7189.5)">
-                    <g id="map-pin" transform="translate(234 7194.5)">
-                      <g transform="matrix(1, 0, 0, 1, -6.5, -5)" filter="url(#패스_38027)">
-                        <path id="패스_38027-2" data-name="패스 38027" d="M15,6.727C15,11.182,9,15,9,15S3,11.182,3,6.727A5.868,5.868,0,0,1,9,1a5.868,5.868,0,0,1,6,5.727Z" transform="translate(6.5 5.5)" fill="#4866e4" stroke="#4866e4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-                      </g>
-                    </g>
-                    <circle id="타원_208" data-name="타원 208" cx="2" cy="2" r="2" transform="translate(241 7200)" fill="#fff"/>
-                  </g>
-                </svg>
-              </span>
-              <div style="display: flex; text-align: center; justify-content:center; min-width:80px; padding: 0 11px; border: 1px solid #4866E4; position: absolute; left: 14px; top: -10px; background-color: #fff; font-size: 12px; border-radius: 100px; white-space: nowrap; color:#4866E4; font-weight: 600; line-height: 23px;">
-                내앱앱앱
-              </div>
-            </div>
-            `,
-        size: new naver.maps.Size(22, 35),
-        anchor: new naver.maps.Point(11, 35),
-      },
+    var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+      mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3, // 지도의 확대 레벨
+      };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+    // 지도를 클릭한 위치에 표출할 마커입니다
+    var marker = new kakao.maps.Marker({
+      // 지도 중심좌표에 마커를 생성합니다
+      position: map.getCenter(),
+    });
+    // 지도에 마커를 표시합니다
+    marker.setMap(map);
+
+    // 지도에 클릭 이벤트를 등록합니다
+    // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+    kakao.maps.event.addListener(map, "click", function (mouseEvent) {
+      // 클릭한 위도, 경도 정보를 가져옵니다
+      var latlng = mouseEvent.latLng;
+
+      // 마커 위치를 클릭한 위치로 옮깁니다
+      marker.setPosition(latlng);
     });
   }, []);
   useEffect(() => {

@@ -63,10 +63,9 @@ function HomeIndex() {
     <Container>
       {location && (
         <WebView
-          originWhitelist={['http://*', 'https://*', 'intent://*']}
           onLoad={() => setTimeout(() => onTest(), 300)}
           ref={webViewRef}
-          source={{uri: 'http://127.0.0.1:3010/map'}}
+          source={{uri: 'https://free-meet-web.vercel.app/map'}}
           onMessage={event => {
             console.log('받은 데이터(React) : ' + event.nativeEvent.data);
           }}
