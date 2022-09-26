@@ -47,7 +47,6 @@ function HomeIndex() {
       }
     }
   };
-
   useEffect(() => {
     requestPermission();
   }, []);
@@ -66,7 +65,7 @@ function HomeIndex() {
           onLoad={() => setTimeout(() => onTest(), 300)}
           ref={webViewRef}
           source={{uri: 'https://free-meet-web.vercel.app/map'}}
-          // source={{uri: 'http://localhost:3010/map'}}
+          // source={{uri: 'http://127.0.01:3010'}}
           onMessage={event => {
             console.log('받은 데이터(React) : ' + event.nativeEvent.data);
           }}
