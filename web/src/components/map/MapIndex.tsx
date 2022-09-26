@@ -15,7 +15,7 @@ function MapIndex() {
     if (myLocation) {
       var mapContainer = document.getElementById("map"), // 지도를 표시할 div
         mapOption = {
-          center: new kakao.maps.LatLng(myLocation.Ma, myLocation.La), // 지도의 중심좌표
+          center: new kakao.maps.LatLng(33.450705, 126.570677), // 지도의 중심좌표
           level: 3, // 지도의 확대 레벨
         };
 
@@ -23,9 +23,21 @@ function MapIndex() {
 
       // 지도를 클릭한 위치에 표출할 마커입니다
       var marker = new kakao.maps.Marker({
+        map,
         // 지도 중심좌표에 마커를 생성합니다
         position: map.getCenter(),
       });
+      var marker = new kakao.maps.Marker({
+        map,
+        // 지도 중심좌표에 마커를 생성합니다
+        position: new kakao.maps.LatLng(33.450936, 126.569477),
+      });
+      var marker = new kakao.maps.Marker({
+        map,
+        // 지도 중심좌표에 마커를 생성합니다
+        position: new kakao.maps.LatLng(33.450879, 126.56994),
+      });
+
       // 지도에 마커를 표시합니다
       marker.setMap(map);
 
@@ -41,6 +53,7 @@ function MapIndex() {
       });
     }
   }, [myLocation]);
+
   useEffect(() => {
     // RN에서 웹으로 데이터를 전송했을때 message이벤트가 실행됩니다.
     window.addEventListener("message", (e: any) => {
@@ -50,7 +63,11 @@ function MapIndex() {
   }, []);
   return (
     <Container>
-      <button onClick={() => ReactNativeWebView.postMessage("야야야포스트")}>
+      <button
+        onClick={() =>
+          ReactNativeWebView.postMessage(JSON.stringify(clickLocation))
+        }
+      >
         포스트
       </button>
       <div id="map" style={{ width: "100%", height: `calc(100vh - 268px)` }} />
