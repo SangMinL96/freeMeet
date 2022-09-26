@@ -40,7 +40,7 @@ function MapIndex() {
         setClickLocation(latlng);
       });
     }
-  }, []);
+  }, [myLocation]);
   useEffect(() => {
     // RN에서 웹으로 데이터를 전송했을때 message이벤트가 실행됩니다.
     window.addEventListener("message", (e: any) => {
