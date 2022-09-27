@@ -4,7 +4,7 @@ import Geolocation from 'react-native-geolocation-service';
 import WebView from 'react-native-webview';
 import styled from 'styled-components';
 
-function HomeIndex() {
+function KakaoMap() {
   const webViewRef = useRef<any>(null);
   const [location, setLocation] = useState<any>(null);
   const requestPermission = async () => {
@@ -76,7 +76,7 @@ function HomeIndex() {
   );
 }
 
-export default React.memo(HomeIndex);
+export default React.memo(KakaoMap);
 
 const Container = styled(SafeAreaView)`
   width: 100%;
