@@ -8,9 +8,13 @@ const MapIndex = dynamic(() => import("../../components/map/MapIndex"), {
 function MapPage() {
   return (
     <>
-      <script
+      {/* <script
         type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=jt4thwo3nc"
+      ></script> */}
+      <script
+        type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=jt4thwo3nc&submodules=geocoder"
       ></script>
       <MapIndex />
     </>

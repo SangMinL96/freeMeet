@@ -52,7 +52,10 @@ function HomeIndex() {
   }, []);
 
   const onTest = async () => {
-    await webViewRef.current.postMessage(`lat=${location.latitude}`);
+    console.log(location);
+    await webViewRef.current.postMessage(
+      `lat=${37.4904251}::lng=${127.1247216}`,
+    );
   };
   return (
     <Container>
@@ -60,10 +63,10 @@ function HomeIndex() {
         <WebView
           originWhitelist={['*']}
           javaScriptEnabled
-          domStorageEnabled
           javaScriptEnabledAndroid
+          mixedContentMode="always"
           startInLoadingState={true}
-          onLoad={() => setTimeout(() => onTest(), 300)}
+          onLoadEnd={() => setTimeout(() => onTest(), 300)}
           ref={webViewRef}
           // source={{uri: 'https://free-meet-web.vercel.app/map'}}
           source={{uri: 'http://192.168.112.169:3010/map'}}

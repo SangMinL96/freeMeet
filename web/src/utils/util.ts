@@ -67,3 +67,8 @@ export function isArray(data) {
     return [];
   }
 }
+
+export const parseText = (text, target) => {
+  const regex = new RegExp(`${target}=([a-z0-9.,_-]*)`);
+  return text?.match(regex)?.[1];
+};
