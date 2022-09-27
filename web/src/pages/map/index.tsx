@@ -10,7 +10,7 @@ function MapPage() {
     <>
       <script
         type="text/javascript"
-        src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=jt4thwo3nc"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=jt4thwo3nc"
       ></script>
       <MapIndex />
     </>
