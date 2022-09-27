@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { isIOS, isAndroid } from "react-device-detect";
 import { parseText } from "@utils/util";
+import { useOnloadData } from "./hooks/useOnloadData";
 
 function MapIndex() {
   const [clickAddr, setClickAddr] = useState(null);
@@ -12,7 +13,7 @@ function MapIndex() {
     lat: number;
     lng: number;
   }>(null);
-
+  useOnloadData({ setMyLocation });
   const sampleData = [
     {
       lat: 37.4904251,
@@ -25,13 +26,19 @@ function MapIndex() {
   ];
 
   useEffect(() => {
-    if (!myLocation) return;
+    // if (!myLocation) return;
     var map = new naver.maps.Map("map", {
-      center: new naver.maps.LatLng(myLocation.lat, myLocation.lng),
+      center: new naver.maps.LatLng(
+        myLocation?.lat || 37.4904251,
+        myLocation?.lng || 127.1247216
+      ),
       zoom: 15,
     });
     var marker = new naver.maps.Marker({
-      position: new naver.maps.LatLng(myLocation.lat, myLocation.lng),
+      position: new naver.maps.LatLng(
+        myLocation?.lat || 37.4904251,
+        myLocation?.lng || 127.1247216
+      ),
       map: map,
     });
 
@@ -83,23 +90,6 @@ function MapIndex() {
     // );
   }, [myLocation]);
 
-  useEffect(() => {
-    // RN에서 웹으로 데이터를 전송했을때 message이벤트가 실행됩니다.
-    if (isIOS) {
-      window.addEventListener("message", (e: any) => {
-        const lat = parseText(e.data, "lat");
-        const lng = parseText(e.data, "lng");
-        setMyLocation({ lat, lng });
-      });
-    }
-    if (isAndroid) {
-      document.addEventListener("message", (e: any) => {
-        const lat = parseText(e.data, "lat");
-        const lng = parseText(e.data, "lng");
-        setMyLocation({ lat, lng });
-      });
-    }
-  }, []);
   return (
     <Container>
       <button

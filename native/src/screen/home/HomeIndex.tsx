@@ -68,8 +68,8 @@ function HomeIndex() {
           startInLoadingState={true}
           onLoadEnd={() => setTimeout(() => onTest(), 300)}
           ref={webViewRef}
-          // source={{uri: 'https://free-meet-web.vercel.app/map'}}
-          source={{uri: 'http://192.168.112.169:3010/map'}}
+          source={{uri: 'https://free-meet-web.vercel.app/map'}}
+          // source={{uri: 'http://192.168.112.169:3010/map'}}
           onMessage={event => {
             console.log('받은 데이터(React) : ' + event.nativeEvent.data);
           }}
