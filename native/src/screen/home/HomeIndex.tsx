@@ -1,11 +1,17 @@
+import {useRoute} from '@react-navigation/native';
 import React, {useEffect, useRef, useState} from 'react';
-import {PermissionsAndroid, Platform, SafeAreaView} from 'react-native';
+import {PermissionsAndroid, Platform, SafeAreaView, Text} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import WebView from 'react-native-webview';
 import styled from 'styled-components';
 
 function HomeIndex() {
-  return <Container></Container>;
+  const {params} = useRoute() as any;
+  return (
+    <Container>
+      <Text>{params?.category || ''}</Text>
+    </Container>
+  );
 }
 
 export default React.memo(HomeIndex);

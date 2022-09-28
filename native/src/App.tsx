@@ -2,7 +2,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import theme from './style/theme';
 import {ThemeProvider} from 'styled-components';
-import StackIndex from './stack/StackIndex';
+import StackIndex from './stack/_StackIndex';
 import {SafeAreaView} from 'react-native';
 
 function App() {

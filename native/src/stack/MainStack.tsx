@@ -97,7 +97,6 @@ function MyTabBar({state, descriptors, navigation}: any) {
                   textAlign: 'center',
                   flexDirection: 'column',
                   fontSize: 10,
-                  marginTop: 3,
                 },
               ]}>
               {label}
@@ -109,31 +108,22 @@ function MyTabBar({state, descriptors, navigation}: any) {
   );
 }
 
-function MainStack() {
+function MainStack({route}) {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="홈"
       tabBar={props => <MyTabBar {...props} />}>
       <Tab.Screen
         name="홈"
-        navigationKey="home"
         options={{
           header: () => <Header />,
         }}
         component={HomeIndex}
       />
       <Tab.Screen name="준비중" navigationKey="no" component={ProfileIndex} />
-      <Tab.Screen
-        name="내 근처"
-        navigationKey="mylocation"
-        component={MapIndex}
-      />
+      <Tab.Screen name="내 근처" component={MapIndex} />
       <Tab.Screen name="채팅" navigationKey="chat" component={ProfileIndex} />
-      <Tab.Screen
-        name="내 정보"
-        navigationKey="profile"
-        component={ProfileIndex}
-      />
+      <Tab.Screen name="내 정보" component={ProfileIndex} />
       {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
     </Tab.Navigator>
   );
