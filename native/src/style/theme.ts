@@ -40,34 +40,44 @@ const textEllipsis = css`
 // 밑에는 css 도 이렇게 할 수 있다는거
 // 스타일 적용할 땐 다른 속성 밑에 ${props => props.theme.flexCenter} 추가해주기.
 const flexCenter_R = css`
-  flex: 1;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 `;
 const flexCenter_C = css`
-  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 const flexStart_R = css`
-  flex: 1;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 `;
 const flexStart_C = css`
-  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 `;
+
+const flexBetween_R = css`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+const flexBetween_C = css`
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const theme = {
   ...breakpoints,
   ...colors,
   flexCenter_R,
   flexCenter_C,
+  flexBetween_R,
+  flexBetween_C,
   flexStart_R,
   flexStart_C,
   textEllipsis,

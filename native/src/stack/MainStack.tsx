@@ -3,10 +3,17 @@ import HomeIndex from '@screen/home/HomeIndex';
 import MapIndex from '@screen/map/MapIndex';
 import ProfileIndex from '@screen/profile/ProfileIndex';
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {
+  SafeAreaView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import styled from 'styled-components/native';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
-// Ionicons.loadFont()
+import Icon from 'react-native-vector-icons/Feather';
+import Header from 'components/header/Header';
+import {globalStyles} from 'style/globalStyles';
 
 const Tab = createBottomTabNavigator();
 
@@ -41,7 +48,6 @@ function MyTabBar({state, descriptors, navigation}: any) {
             target: route.key,
           });
         };
-
         return (
           <TouchableOpacity
             accessibilityRole="button"
@@ -52,8 +58,48 @@ function MyTabBar({state, descriptors, navigation}: any) {
             onLongPress={onLongPress}>
             <Text
               style={{
-                color: isFocused ? '#673ab7' : '#222',
+                textAlign: 'center',
               }}>
+              {route.name == '홈' && (
+                <Icon
+                  name="home"
+                  size={20}
+                  color={isFocused ? '#262626' : '#808080'}
+                />
+              )}
+              {route.name == '채팅' && (
+                <Icon
+                  name="message-square"
+                  size={20}
+                  color={isFocused ? '#262626' : '#808080'}
+                />
+              )}
+              {route.name == '내 근처' && (
+                <Icon
+                  name="map-pin"
+                  size={20}
+                  color={isFocused ? '#262626' : '#808080'}
+                />
+              )}
+              {route.name == '내 정보' && (
+                <Icon
+                  name="user"
+                  size={20}
+                  color={isFocused ? '#262626' : '#808080'}
+                />
+              )}
+            </Text>
+            <Text
+              style={[
+                globalStyles.fontWeight400,
+                {
+                  color: isFocused ? '#262626' : '#808080',
+                  textAlign: 'center',
+                  flexDirection: 'column',
+                  fontSize: 10,
+                  marginTop: 3,
+                },
+              ]}>
               {label}
             </Text>
           </TouchableOpacity>
@@ -71,7 +117,9 @@ function MainStack() {
       <Tab.Screen
         name="홈"
         navigationKey="home"
-        options={{header: () => null}}
+        options={{
+          header: () => <Header />,
+        }}
         component={HomeIndex}
       />
       <Tab.Screen name="준비중" navigationKey="no" component={ProfileIndex} />
@@ -95,8 +143,11 @@ export default React.memo(MainStack);
 
 const NavButton = styled(View)`
   width: 100%;
-  height: 60px;
-  background-color: wheat;
+  height: 50px;
+  background-color: white;
+  border-top-color: #eeeeee;
+  border-top-width: 1px;
+  border-top-style: solid;
   padding: 0 20px;
   align-items: center;
   justify-content: space-between;

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {PermissionsAndroid, Platform, SafeAreaView} from 'react-native';
+import {PermissionsAndroid, Platform, SafeAreaView, View} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import WebView from 'react-native-webview';
 import styled from 'styled-components';
@@ -52,11 +52,11 @@ function MapIndex() {
   }, []);
 
   const onTest = async () => {
-    console.log(location);
     await webViewRef.current.postMessage(
       `lat=${37.4904251}::lng=${127.1247216}`,
     );
   };
+  console.log(location);
   return (
     <Container>
       {location && (
@@ -81,7 +81,7 @@ function MapIndex() {
 
 export default React.memo(MapIndex);
 
-const Container = styled(SafeAreaView)`
+const Container = styled(View)`
   width: 100%;
   height: 100%;
   background-color: white;
