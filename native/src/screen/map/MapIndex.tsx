@@ -1,62 +1,17 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {PermissionsAndroid, Platform, SafeAreaView, View} from 'react-native';
-import Geolocation from 'react-native-geolocation-service';
+import {useMyLocation} from 'hooks/useMyLocation';
+import React, {useRef} from 'react';
+import {View} from 'react-native';
 import WebView from 'react-native-webview';
 import styled from 'styled-components';
 
 function MapIndex() {
   const webViewRef = useRef<any>(null);
-  const [location, setLocation] = useState<any>(null);
-  const requestPermission = async () => {
-    if (Platform.OS === 'ios') {
-      const result = await Geolocation.requestAuthorization('always');
-      if (result === 'granted') {
-        Geolocation.getCurrentPosition(
-          pos => {
-            setLocation(pos.coords);
-          },
-          error => {
-            console.log(error);
-          },
-          {
-            enableHighAccuracy: true,
-            timeout: 3600,
-            maximumAge: 3600,
-          },
-        );
-      }
-    }
-    if (Platform.OS === 'android') {
-      const result = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      );
-      if (result === 'granted') {
-        Geolocation.getCurrentPosition(
-          pos => {
-            setLocation(pos.coords);
-          },
-          error => {
-            console.log(error);
-          },
-          {
-            enableHighAccuracy: true,
-            timeout: 3600,
-            maximumAge: 3600,
-          },
-        );
-      }
-    }
-  };
-  useEffect(() => {
-    requestPermission();
-  }, []);
-
+  const {location} = useMyLocation();
   const onTest = async () => {
     await webViewRef.current.postMessage(
       `lat=${37.4904251}::lng=${127.1247216}`,
     );
   };
-  console.log(location);
   return (
     <Container>
       {location && (

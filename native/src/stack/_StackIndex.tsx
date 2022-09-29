@@ -17,7 +17,7 @@ function StackIndex() {
         component={MainStack}
       />
       <Stack.Group
-        screenOptions={({navigation}) => ({
+        screenOptions={() => ({
           cardStyle: {backgroundColor: 'white'},
           header: () => <ModalHeader />,
         })}>

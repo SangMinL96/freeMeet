@@ -1,17 +1,49 @@
 import {useNavigation} from '@react-navigation/native';
-import {useTabActionJumpTo} from 'hooks/useTabActionJumpTo';
+import {ScreenNavigationProp} from 'interface/common';
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import styled from 'styled-components';
 function CategoryModalIndex() {
-  const {navigate} = useNavigation() as any;
-  const [jumpToAction] = useTabActionJumpTo();
+  const {navigate} = useNavigation<ScreenNavigationProp>();
+  const testData = [
+    {
+      title: '전체',
+      value: 'mylocation',
+    },
+    {
+      title: '내 주변',
+      value: 'mylocation',
+    },
+    {
+      title: '내 주변',
+      value: 'mylocation',
+    },
+    {
+      title: '내 주변',
+      value: 'mylocation',
+    },
+    {
+      title: '내 주변',
+      value: 'mylocation',
+    },
+    {
+      title: '내 주변',
+      value: 'mylocation',
+    },
+    {
+      title: '내 주변',
+      value: 'mylocation',
+    },
+    {
+      title: '내 주변',
+      value: 'mylocation',
+    },
+  ];
   return (
     <Container>
       <TouchableOpacity
         onPress={() => {
-          navigate('홈메인');
-          jumpToAction('홈', {category: '내주변'});
+          navigate('홈', {category: '내주변'});
         }}>
         <Text>asdfs</Text>
       </TouchableOpacity>

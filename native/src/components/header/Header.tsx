@@ -20,18 +20,18 @@ function Header() {
               {
                 marginRight: 2,
                 color: theme.black,
-                fontSize: 14,
+                fontSize: 17,
               },
             ]}>{`내 주변`}</Text>
-          <Icon name="chevron-down" size={20} color={theme.black} />
+          <Icon name="chevron-down" size={23} color={theme.black} />
         </TouchableOpacity>
       </View>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity>
-          <Icon name="search" size={18} color={theme.black} />
+          <Icon name="search" size={23} color={theme.black} />
         </TouchableOpacity>
         <TouchableOpacity style={{marginLeft: 10}}>
-          <Icon name="bell" size={18} color={theme.black} />
+          <Icon name="bell" size={23} color={theme.black} />
         </TouchableOpacity>
       </View>
     </Container>
@@ -42,7 +42,7 @@ export default React.memo(Header);
 
 const Container = styled(View)`
   width: 100%;
-  height: 45px;
+  height: 50px;
   padding: 0 15px;
   ${theme.flexBetween_R};
   border-bottom-width: 1px;

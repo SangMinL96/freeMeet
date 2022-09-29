@@ -2,18 +2,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeIndex from '@screen/home/HomeIndex';
 import MapIndex from '@screen/map/MapIndex';
 import ProfileIndex from '@screen/profile/ProfileIndex';
-import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import styled from 'styled-components/native';
-import Icon from 'react-native-vector-icons/Feather';
 import Header from 'components/header/Header';
+import React from 'react';
+import {Text, TouchableOpacity, View} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 import {globalStyles} from 'style/globalStyles';
+import styled from 'styled-components/native';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,6 +44,7 @@ function MyTabBar({state, descriptors, navigation}: any) {
         };
         return (
           <TouchableOpacity
+            key={`${route.name}_${index}`}
             accessibilityRole="button"
             accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
@@ -63,40 +58,40 @@ function MyTabBar({state, descriptors, navigation}: any) {
               {route.name == '홈' && (
                 <Icon
                   name="home"
-                  size={20}
+                  size={23}
                   color={isFocused ? '#262626' : '#808080'}
                 />
               )}
               {route.name == '채팅' && (
                 <Icon
                   name="message-square"
-                  size={20}
+                  size={23}
                   color={isFocused ? '#262626' : '#808080'}
                 />
               )}
               {route.name == '내 근처' && (
                 <Icon
                   name="map-pin"
-                  size={20}
+                  size={23}
                   color={isFocused ? '#262626' : '#808080'}
                 />
               )}
               {route.name == '내 정보' && (
                 <Icon
                   name="user"
-                  size={20}
+                  size={23}
                   color={isFocused ? '#262626' : '#808080'}
                 />
               )}
             </Text>
             <Text
               style={[
-                globalStyles.fontWeight400,
+                globalStyles.fontWeight600,
                 {
                   color: isFocused ? '#262626' : '#808080',
                   textAlign: 'center',
                   flexDirection: 'column',
-                  fontSize: 10,
+                  fontSize: 11,
                 },
               ]}>
               {label}
@@ -108,7 +103,7 @@ function MyTabBar({state, descriptors, navigation}: any) {
   );
 }
 
-function MainStack({route}) {
+function MainStack() {
   return (
     <Tab.Navigator
       initialRouteName="홈"

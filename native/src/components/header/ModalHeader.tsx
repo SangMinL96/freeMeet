@@ -5,16 +5,24 @@ import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Feather';
 import {globalStyles} from 'style/globalStyles';
 import {useNavigation, useRoute} from '@react-navigation/native';
+
+type ParamsType = {
+  title: string;
+};
+
 function ModalHeader() {
-  const {goBack, navigate} = useNavigation() as any;
-  const {title} = useRoute().params as any;
+  const {goBack} = useNavigation();
+  const {title} = useRoute().params as ParamsType;
   //   const {title} = getState();
   return (
     <Container>
       <TouchableOpacity
-        style={{position: 'absolute', left: 15}}
+        style={{
+          position: 'absolute',
+          left: 15,
+        }}
         onPress={() => goBack()}>
-        <Icon name="chevron-left" size={22} color={theme.black} />
+        <Icon name="chevron-left" size={25} color={theme.black} />
       </TouchableOpacity>
       <TouchableOpacity>
         <Text
@@ -23,7 +31,7 @@ function ModalHeader() {
             {
               marginRight: 2,
               color: theme.black,
-              fontSize: 14,
+              fontSize: 17,
             },
           ]}>
           {title || ''}

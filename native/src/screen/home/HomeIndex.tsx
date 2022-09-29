@@ -1,15 +1,14 @@
 import {useRoute} from '@react-navigation/native';
-import React, {useEffect, useRef, useState} from 'react';
-import {PermissionsAndroid, Platform, SafeAreaView, Text} from 'react-native';
-import Geolocation from 'react-native-geolocation-service';
-import WebView from 'react-native-webview';
+import {ScreenRouteProp} from 'interface/common';
+import React from 'react';
+import {SafeAreaView, Text} from 'react-native';
 import styled from 'styled-components';
 
 function HomeIndex() {
-  const {params} = useRoute() as any;
+  const {params} = useRoute<ScreenRouteProp>();
   return (
     <Container>
-      <Text>{params?.category || ''}</Text>
+      <Text>{params?.category || 'dd'}</Text>
     </Container>
   );
 }
