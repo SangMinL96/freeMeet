@@ -1,4 +1,5 @@
 import {useRoute} from '@react-navigation/native';
+import HomeHeader from 'components/header/HomeHeader';
 import {ScreenRouteProp} from 'interface/common';
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
@@ -8,7 +9,8 @@ function HomeIndex() {
   const {params} = useRoute<ScreenRouteProp>();
   return (
     <Container>
-      <Text>{params?.category || 'dd'}</Text>
+      <HomeHeader category={params?.category?.title} />
+      <Text>{params?.category?.title || 'dd'}</Text>
     </Container>
   );
 }

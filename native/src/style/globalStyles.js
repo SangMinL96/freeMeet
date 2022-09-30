@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 export const globalStyles = StyleSheet.create({
   fontWeight300: {
@@ -51,5 +51,23 @@ export const globalStyles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  boxShadow: {
+    ...Platform.select({
+      ios: {
+        shadowColor: '#343434',
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 1.0,
+        borderRadius: 10,
+      },
+      android: {
+        elevation: 1,
+        borderRadius: 10,
+      },
+    }),
   },
 });

@@ -6,14 +6,19 @@ import {globalStyles} from 'style/globalStyles';
 import theme from 'style/theme';
 import styled from 'styled-components/native';
 
-function Header() {
+type PropsType = {
+  category?: string;
+};
+
+function HomeHeader({category}: PropsType) {
   const {navigate} = useNavigation<any>();
+
   return (
     <Container>
       <View style={[globalStyles.flexCenter_R]}>
         <TouchableOpacity
           onPress={() => navigate('카테고리모달')}
-          style={{flexDirection: 'row'}}>
+          style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text
             style={[
               globalStyles.fontWeight700,
@@ -22,8 +27,12 @@ function Header() {
                 color: theme.black,
                 fontSize: 17,
               },
-            ]}>{`내 주변`}</Text>
-          <Icon name="chevron-down" size={23} color={theme.black} />
+            ]}>
+            {category}
+          </Text>
+          <Text style={{marginBottom: 3}}>
+            <Icon name="chevron-down" size={23} color={theme.black} />
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={{flexDirection: 'row'}}>
@@ -38,7 +47,7 @@ function Header() {
   );
 }
 
-export default React.memo(Header);
+export default React.memo(HomeHeader);
 
 const Container = styled(View)`
   width: 100%;

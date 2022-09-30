@@ -2,7 +2,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeIndex from '@screen/home/HomeIndex';
 import MapIndex from '@screen/map/MapIndex';
 import ProfileIndex from '@screen/profile/ProfileIndex';
-import Header from 'components/header/Header';
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -107,17 +106,16 @@ function MainStack() {
   return (
     <Tab.Navigator
       initialRouteName="홈"
+      screenOptions={{header: () => null}}
       tabBar={props => <MyTabBar {...props} />}>
       <Tab.Screen
         name="홈"
-        options={{
-          header: () => <Header />,
-        }}
+        initialParams={{category: {title: '내 주변', id: 'mylocation'}}}
         component={HomeIndex}
       />
-      <Tab.Screen name="준비중" navigationKey="no" component={ProfileIndex} />
+      <Tab.Screen name="준비중" component={ProfileIndex} />
       <Tab.Screen name="내 근처" component={MapIndex} />
-      <Tab.Screen name="채팅" navigationKey="chat" component={ProfileIndex} />
+      <Tab.Screen name="채팅" component={ProfileIndex} />
       <Tab.Screen name="내 정보" component={ProfileIndex} />
       {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
     </Tab.Navigator>
