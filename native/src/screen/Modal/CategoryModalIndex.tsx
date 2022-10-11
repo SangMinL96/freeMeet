@@ -142,6 +142,6 @@ const CategoryButton = styled(TouchableOpacity)`
   ${theme.flexStart_R};
   padding: 0 15px;
   margin-bottom: 5px;
-
   border: 1px solid #e4e4e4;
+  border-radius: 8px;
 `;

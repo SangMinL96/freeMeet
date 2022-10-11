@@ -1,8 +1,10 @@
 import {useRoute} from '@react-navigation/native';
+import Divider from 'components/common/Divider';
 import HomeHeader from 'components/header/HomeHeader';
+import Card from 'components/home/Card';
 import {ScreenRouteProp} from 'interface/common';
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import styled from 'styled-components';
 
 function HomeIndex() {
@@ -10,7 +12,10 @@ function HomeIndex() {
   return (
     <Container>
       <HomeHeader category={params?.category?.title} />
-      <Text>{params?.category?.title || 'dd'}</Text>
+      <Card />
+      <Divider />
+      <Card />
+      <Divider />
     </Container>
   );
 }
